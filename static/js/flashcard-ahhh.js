@@ -231,7 +231,7 @@ $(document).ready(function() {
     }
 
     function onNewCardClicked() {
-        g_card = {'q': "", 'a': ""};
+        g_card = {'q': "", 'a': "", 'n': ""};
         g_deck.cards.push(g_card);
         onEditCardClicked();
     }
@@ -239,7 +239,7 @@ $(document).ready(function() {
     function onEditCardClicked() {
         $('#new-card #input-question').val(g_card.q);
         $('#new-card #input-answer').val(g_card.a);
-        $('#new-card #note-answer').val(g_card.n);
+        $('#new-card #input-note').val(g_card.n);
         $('#new-card').modal('show');
     }
 
