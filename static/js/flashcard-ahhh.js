@@ -151,7 +151,7 @@ $(document).ready(function() {
             return best[1];
 
         // If everything else fails, we create a dummy card.
-        return {"q": "1 + 2 = ?", "a": "3"};
+        return {"q": "你好", "a": "hello", "n": "ni3 hao3"};
     }
 
     function nextCard() {
@@ -181,7 +181,8 @@ $(document).ready(function() {
 
     function showAnswer() {
         $('#flashcard #question').hide();
-        $('#flashcard #answer .question-text').text(g_card.a);
+        $('#flashcard #answer .answer-text').text(g_card.a);
+        $('#flashcard #answer .note-text').text(g_card.n);
         $('#flashcard #answer').show();
     }
 
@@ -222,6 +223,7 @@ $(document).ready(function() {
     function onNewCardAddClicked() {
         g_card.q = $('#new-card #input-question').val();
         g_card.a = $('#new-card #input-answer').val();
+        g_card.n = $('#new-card #input-note').val();
         g_card.time = new Date();
         saveCard();
         $('#new-card').modal('hide');
@@ -237,6 +239,7 @@ $(document).ready(function() {
     function onEditCardClicked() {
         $('#new-card #input-question').val(g_card.q);
         $('#new-card #input-answer').val(g_card.a);
+        $('#new-card #note-answer').val(g_card.n);
         $('#new-card').modal('show');
     }
 
@@ -267,7 +270,7 @@ $(document).ready(function() {
     }
 
     function onImport(evt) {
-        console.log("import");
+        console.log("import", evt);
         var file = evt.target.files[0];
         var reader = new FileReader();
         reader.onload = function(ev) {
